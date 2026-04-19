@@ -1,125 +1,59 @@
-RecipeShare – Smart Recipe Sharing & Search Platform
-A comprehensive system for sharing recipes, managing advanced image galleries, and performing smart searches based on available ingredients.
+🍳 RecipeShare – Smart Recipe Sharing Platform
+📌 Overview
+Backend system for sharing and discovering recipes. Built with Python (Flask), SQLite (SQLAlchemy), and Angular. 
++2
+
+🧠 Data Model
+
+User: Stores credentials and permission roles (Admin, Uploader, Reader). 
 +1
 
-🚀 Technologies
 
-Backend: Python with Flask.
-+3
+Recipe: Contains main recipe data, including original and variant image paths. 
++1
 
 
-Database: SQLite with SQLAlchemy using an ORM approach.
+IngredientEntry: Manages quantities and units, establishing a One-to-Many relationship with recipes. 
 +2
 
 
-Frontend: Angular.
+BaseModel: A foundation class providing id and save() methods to all other models. 
++1
+
+🔒 Security Note: Access to sensitive functions is restricted via custom decorators based on user roles. 
++1
+
+⚙️ Business Logic
+Smart Ingredient Search
+The core algorithm calculates a Matching Score to suggest recipes that require minimum additional shopping: 
 +1
 
 
-Image Processing: Pillow library for automated image manipulation.
-+2
-
-🌟 Key Features
-
-Search by Ingredients: An algorithm that calculates a matching score based on the user's available ingredients.
-+2
+Intersection: Finds ingredients shared between the user's input and the recipe's requirements using Python's set operations. 
 
 
-Advanced Image Gallery: Each recipe features the original image plus three automatically generated variations (e.g., black & white, rotated, or cropped).
-+2
-
-Permission Management: Three user roles:
-
-
-Regular User: Can view, search, and rate recipes.
+Score Calculation: (Shared Ingredients) / (Required Ingredients). 
 +1
 
 
-Content Uploader: A regular user authorized to add recipes to the database.
+Ranking: Results are filtered by a threshold (e.g., 20%) and sorted in descending order by score. 
+
+Advanced Image Gallery
+Automated pipeline for image processing using the Pillow library: 
++1
+
+Generates 3 additional variations (e.g., Black & White, Rotated, Cropped) for every uploaded photo. 
+
+Ensures unique filenames via uuid to prevent server-side naming collisions. 
++1
+
+🎨 Design Decision
+
+ORM Approach: We utilize Object-Relational Mapping (OOP) instead of raw SQL queries for more maintainable and readable code. 
 +1
 
 
-Admin: Can delete recipes, upload content, and approve uploader requests.
-+2
-
-
-Filtering & Sorting: Ability to filter by kosher status (Dairy, Meat, Parve), preparation time, and rating.
+Client-Server Separation: Images are served through dedicated GET routes, ensuring accessibility and security across different devices. 
 +1
 
-🛠 Data Models (ORM)
-The project utilizes inheritance from a BaseModel which provides an id and a save() method:
-+2
-
-
-User: Stores credentials (password), roles, and the is_approved_uploader flag.
-+3
-
-
-Recipe: Stores main recipe data, the original image_path, and a variation_paths string/JSON for generated images.
-+2
-
-
-IngredientEntry: Manages quantities and units, creating a One-to-Many relationship between recipes and their ingredients.
-+2
-
-🧠 Search Algorithm
-The server processes searches in four main steps:
-+1
-
-
-Data Preparation: User and recipe ingredient lists are converted into Sets.
-+1
-
-
-Intersection: Finds matching ingredients using the & operator.
-+1
-
-
-Matching Score: Calculated as: 
-Required Ingredients Count
-Shared Ingredients Count
-​
- 
-.
-+1
-
-
-Sorting: Results are filtered by a minimum threshold and sorted in descending order by score.
-+1
-
-🖼 Image Handling Pipeline
-When an image is uploaded via POST /upload:
-+1
-
-
-Unique Naming: The server generates a unique filename using uuid4 to prevent conflicts.
-+2
-
-
-Storage: The original file is saved in the /uploads/ directory on the server.
-+1
-
-
-Variations: Pillow generates three additional files (e.g., img.convert('L') for B&W).
-+1
-
-
-DB Update: Paths for all four images are saved in the recipe record.
-+1
-
-
-Display: The client retrieves images via a separate GET request using the saved URLs.
-+1
-
-🔒 Security
-
-Decorators: Used on the server to verify permissions for sensitive functions.
-+2
-
-
-Server-Side Validation: Ensures that only authorized users can perform specific actions like deleting recipes or approving uploaders.
-+1
-
-
-Error Handling: The server is configured to return appropriate errors for unauthorized access.
-+1
+Project Documentation | Recipe Sharing Platform | Final Project
