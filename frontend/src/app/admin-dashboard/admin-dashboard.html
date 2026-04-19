@@ -1,0 +1,39 @@
+<div class="admin-container">
+  <h2>ניהול משתמשים והרשאות</h2>
+  
+  <table *ngIf="users.length > 0; else noUsers">
+    <thead>
+      <tr>
+        <th>שם</th>
+        <th>אימייל</th>
+        <th>תפקיד</th>
+        <th>סטטוס אישור</th>
+        <th>פעולות</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+   <td>{{ user.username }}</td> 
+  
+  <td>{{ user.email }}</td>
+  
+  <td>{{ user.role }}</td>
+
+  <td [class.status-ok]="user.is_approved_uploader" [class.status-wait]="user.request_pending">
+    {{ user.is_approved_uploader ? '✅ מאושר' : (user.request_pending ? '⏳ ממתין לאישור' : 'משתמש רגיל') }}
+  </td>
+
+  <td>
+    <button *ngIf="user.request_pending && !user.is_approved_uploader" class="btn-approve" (click)="onApprove(user.id)">
+      אשר כמשתמש תוכן
+    </button>
+    <button class="btn-delete" (click)="deleteUser(user.id)">מחיקה</button>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noUsers>
+    <p class="empty-msg">לא נמצאו משתמשים במערכת או שאין לך הרשאת מנהל.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #4ecdc4;
+  --dark-color: #2d3436;
+  --light-bg: #f9f9f9;
+  --white: #ffffff;
+  --shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--light-bg);
+  direction: rtl; /* תמיכה בעברית */
+}

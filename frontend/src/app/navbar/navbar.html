@@ -1,0 +1,34 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo" routerLink="/">
+      <span class="logo-icon">🥗</span>
+      <span class="logo-text">RecipeBook</span>
+    </div>
+
+    <ul class="nav-links">
+  <li *ngIf="currentUser" class="user-greeting">
+    <span>שלום, {{ currentUser?.userName || currentUser?.Name }}</span>
+    
+    <a routerLink="/profile" class="nav-link">👤 אזור אישי</a>
+    
+    <button (click)="logout()" class="logout-link" style="cursor: pointer;">התנתק</button>
+  </li>
+      <li><a routerLink="/recipes" routerLinkActive="active">מתכונים</a></li>
+
+      <li *ngIf="(recipeService.isLoggedIn$ | async) && canUploadRecipe()">
+        <a routerLink="/add-recipe" routerLinkActive="active" class="add-recipe-link">הוספת מתכון ➕</a>
+      </li>
+
+      <li *ngIf="recipeService.isAdmin$ | async">
+        <a routerLink="/admin" routerLinkActive="active" class="admin-link">ניהול משתמשים ⚙️</a>
+      </li>
+
+      <ng-container *ngIf="!(recipeService.isLoggedIn$ | async)">
+        <li><a routerLink="/login" routerLinkActive="active">התחברות</a></li>
+        <li><a routerLink="/register" routerLinkActive="active" class="btn-reg">הרשמה</a></li>
+      </ng-container>
+
+
+    </ul>
+  </div>
+</nav>

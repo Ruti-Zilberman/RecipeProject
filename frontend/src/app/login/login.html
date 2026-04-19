@@ -1,0 +1,31 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="icon-circle">
+        <i class="fas fa-utensils"></i> </div>
+      <h2>שמחים שחזרת!</h2>
+      <p>התחברי כדי לראות את המתכונים השמורים שלך</p>
+    </div>
+
+    <form class="login-form">
+      <div class="input-group">
+        <label>אימייל</label>
+        <input type="email" [(ngModel)]="loginData.email" name="email" placeholder="example@mail.com" required>
+      </div>
+
+      <div class="input-group">
+        <label>סיסמה</label>
+        <input type="password" [(ngModel)]="loginData.password" name="password" placeholder="הקלידי סיסמה..." required>
+      </div>
+
+      <button type="button" class="btn-login" (click)="onLogin()">
+        <span>התחברי עכשיו</span>
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <span>עוד לא רשומה?</span>
+      <a routerLink="/register">צרי חשבון חדש</a>
+    </div>
+  </div>
+</div>

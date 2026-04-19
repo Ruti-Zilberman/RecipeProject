@@ -1,0 +1,92 @@
+<!-- <div class="profile-card">
+  <h2>שלום, {{ user?.name || user?.Name }}!</h2>
+  <p>סטטוס נוכחי: 
+    <span [class.status]="true">
+      {{ user?.is_content_user ? 'יוצר תוכן' : 'משתמש רגיל' }}
+    </span>
+  </p>
+
+  <hr>
+
+  <div *ngIf="!user?.is_content_user && !user?.request_pending">
+    <p>רוצה להעלות מתכונים משלך לאתר?</p>
+    <button (click)="sendRequest()" class="request-btn">שלח בקשה להיות משתמש תוכן</button>
+  </div>
+
+  <div *ngIf="user?.request_pending && !user?.is_content_user" class="pending-msg">
+    <p>⏳ בקשתך ממתינה לאישור המנהל...</p>
+  </div>
+</div> -->
+<div class="profile-container">
+  <div class="profile-card">
+
+    <div class="profile-header">
+      <div class="user-avatar" style="font-size: 60px; margin-bottom: 15px;">👤</div>
+      <h2>שלום, {{ user?.userName || user?.Name || user?.name || 'אורח' }}!</h2>
+      <p>{{ user?.email }}</p>
+    </div>
+
+    <div class="status-box">
+      <span class="status-label">סטטוס חשבון:</span>
+      <br>
+      <span *ngIf="user?.is_content_user" class="status-approved">
+        ✅ יוצר תוכן מאושר
+      </span>
+
+      <span *ngIf="!user?.is_content_user && !user?.request_pending" class="status-regular">
+        🍳 משתמש רגיל
+      </span>
+
+      <span *ngIf="user?.request_pending && !user?.is_content_user" class="status-wait">
+        ⏳ ממתין לאישור מנהל
+      </span>
+    </div>
+
+    <hr>
+
+    <div class="actions-section">
+      <div *ngIf="!user?.is_content_user && !user?.request_pending">
+        <button (click)="sendRequest()" class="request-btn">
+          שלח בקשה להפוך ליוצר תוכן
+        </button>
+      </div>
+
+      <div *ngIf="user?.request_pending && !user?.is_content_user" class="pending-msg">
+        <span>בקשתך בבדיקה אצל המנהל...</span>
+      </div>
+
+      <div *ngIf="user?.is_content_user">
+        <button routerLink="/add-recipe" class="request-btn"
+          style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+          ➕ הוספת מתכון חדש
+        </button>
+      </div>
+    </div>
+
+    <div class="my-recipes-section" *ngIf="myRecipes.length > 0">
+      <hr>
+      <h3>המתכונים שלי</h3>
+      <div class="recipes-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+        <div *ngFor="let recipe of myRecipes" class="recipe-mini-card" [routerLink]="['/recipes', recipe.id]"
+          style="cursor: pointer; border: 1px solid #eee; border-radius: 10px; overflow: hidden; background: #fff;">
+          <img [src]="'http://localhost:5000/static/uploads/' + recipe.imagePath"
+            style="width: 100%; height: 80px; object-fit: cover;">
+          <div style="padding: 5px; font-size: 0.8rem; font-weight: bold;">{{ recipe.name }}</div>
+
+          <div class="card-actions">
+            <button class="btn-edit" (click)="editRecipe(recipe.id)">
+              <span class="icon">✏️</span> עריכה
+            </button>
+            <button class="btn-delete" (click)="confirmDelete(recipe.id)">
+              <span class="icon">🗑️</span> מחיקה
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

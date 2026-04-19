@@ -1,0 +1,112 @@
+/* מיכל ראשי */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #fef9f5; /* רקע כתום בהיר מאוד ונעים */
+  direction: rtl;
+}
+
+/* עיצוב הכרטיס */
+.profile-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(230, 126, 34, 0.1);
+  text-align: center;
+  border-top: 6px solid #e67e22; /* הפס הכתום בראש הכרטיס */
+}
+
+/* כותרות וטקסט */
+.profile-card h2 { color: #2d3436; font-weight: 700; }
+.profile-card p { color: #636e72; }
+
+/* תיבת הסטטוס */
+.status-box {
+  margin: 25px 0;
+  padding: 15px;
+  background-color: #fffaf5;
+  border-radius: 12px;
+  border: 1px solid #ffeddb;
+}
+
+.status-label { font-weight: bold; color: #555; }
+
+/* סטטוסים בכתום */
+.status-regular, .status-approved {
+  color: #e67e22;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* כפתור ראשי (שליחת בקשה / הוספה) */
+/* כפתור הוספת מתכון (וכפתור בקשה) - כתום מלא */
+.request-btn, .btn-add-recipe {
+    background: #e67e22 !important; /* כתום חלק */
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    transition: all 0.3s ease;
+}
+
+.request-btn:hover {
+    background: #d35400 !important; /* כתום כהה יותר בסיבוב */
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+}
+
+
+/* --- כפתורי עריכה ומחיקה בכתום --- */
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background-color: #fffaf5;
+  border-top: 1px solid #ffeddb;
+}
+
+.btn-edit, .btn-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border: 1.5px solid #e67e22; /* בורדר כתום */
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  background: white;
+  color: #e67e22; /* טקסט כתום */
+}
+
+/* אפקט מעבר עכבר - הכפתור הופך לכתום מלא */
+.btn-edit:hover, .btn-delete:hover {
+  background-color: #e67e22;
+  color: white;
+}
+
+/* התאמת כרטיסי המתכונים הקטנים */
+.recipe-mini-card {
+  border: 1px solid #ffeddb !important;
+  transition: all 0.3s ease;
+}
+
+.recipe-mini-card:hover {
+  border-color: #e67e22 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(230, 126, 34, 0.15);
+}
+
+.icon { font-size: 1rem; }

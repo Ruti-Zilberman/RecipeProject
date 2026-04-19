@@ -1,0 +1,58 @@
+<div class="details-container">
+  <div *ngIf="recipe; else loading" class="recipe-paper">
+    <button routerLink="/recipes" class="back-btn">← חזרה למתכונים</button>
+    
+    <header class="recipe-header">
+      <h1>{{ recipe.name }}</h1> 
+      <div class="recipe-meta">
+        <span class="badge time">⏱️ {{ recipe.prepTime }} דקות</span>
+        <span class="badge category">🍴 {{ recipe.type }}</span>
+      </div>
+      <p class="description">{{ recipe.description }}</p>
+    </header>
+
+    <div class="recipe-content">
+
+  <div class="recipe-image-detail"*ngIf="recipe">
+    
+    <img [src]="formatImageUrl(recipe.imagePath || recipe.image_path)" 
+         [alt]="recipe.name" 
+         #mainImg
+         class="primary-img"
+         (error)="handleImageError(mainImg)">
+
+    <div class="variations-overlay" *ngIf="recipe.variation_paths">
+      <div *ngFor="let vPath of getVariationArray(recipe.variation_paths)" class="mini-thumb-box">
+        <img [src]="formatImageUrl(vPath)" 
+             class="mini-thumb" 
+             #thumbImg
+             (click)="mainImg.src = thumbImg.src"
+             (error)="thumbImg.style.visibility='hidden'">
+      </div>
+    </div>
+
+  </div>
+
+
+
+      <section class="ingredients-section">
+        <h3><span class="icon">🛒</span> מצרכים</h3>
+        <ul class="ingredients-list">
+          <li *ngFor="let ing of recipe.ingredients">
+            <!-- <span class="amount">{{ ing.amount }} {{ ing.unit }}</span> -->
+            <span class="name">{{ ing.product }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="instructions-section">
+        <h3><span class="icon">🍳</span> אופן ההכנה</h3>
+        <div class="instructions-text">
+          {{ recipe.instructions || 'הוראות ההכנה יתווספו בקרוב...' }}
+        </div>
+      </section>
+    </div> </div> <ng-template #loading>
+    <div class="loading-spinner">טוען מתכון טעים...</div>
+  </ng-template>
+</div> ```
+

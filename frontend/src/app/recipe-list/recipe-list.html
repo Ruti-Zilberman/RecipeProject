@@ -1,0 +1,85 @@
+<div class="main-container">
+  <header class="page-header">
+    <h1>ספר המתכונים שלי</h1>
+    <div class="underline"></div>
+  </header>
+<div class="filter-toolbar" *ngIf="recipes.length > 0">
+  
+  <div class="search-group">
+    <div class="input-with-icon">
+      <span class="field-icon">🔍</span>
+      <input type="text" placeholder="חפשי שם של מתכון..." 
+             [(ngModel)]="localSearchName" (input)="applyLocalFilters()">
+    </div>
+  </div>
+
+  <div class="type-group">
+    <div class="input-with-icon">
+      <span class="field-icon">⚖️</span>
+      <select [(ngModel)]="selectedType" (change)="applyLocalFilters()" class="filter-select">
+        <option value="">כל הסוגים</option>
+        <option value="בשרי">🥩 בשרי</option>
+        <option value="חלבי">🥛 חלבי</option>
+        <option value="פרווה">🥗 פרווה</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="range-group">
+    <div class="range-header">
+      <span class="range-label">זמן הכנה עד:</span>
+      <span class="range-value">{{ maxTime }} דק'</span>
+    </div>
+    <input type="range" min="10" max="180" step="5" 
+           [(ngModel)]="maxTime" (change)="applyLocalFilters()" 
+           class="custom-slider"
+           [style.background]="'linear-gradient(to left, #e67e22 ' + ((maxTime - 10) * 100 / (170)) + '%, #ffffff ' + ((maxTime - 10) * 100 / (170)) + '%)'">
+  </div>
+
+  <button class="btn-clear-modern" (click)="clearFilters()">
+    <span>נקה הכל 🧹</span>
+  </button>
+
+</div>
+ <div class="recipe-grid" *ngIf="filteredRecipes.length > 0">
+  <div *ngFor="let recipe of filteredRecipes" class="recipe-card">
+    
+    <div class="match-badge" *ngIf="recipe.matchScore !== undefined" [ngClass]="getScoreClass(recipe.matchScore)">
+      {{ recipe.matchScore }}% התאמה
+    </div>
+
+    <div class="recipe-image-container">
+      <img [src]="getImageUrl(recipe.imagePath)" alt="מתכון" class="recipe-card-image">
+    </div>
+
+    <div class="card-content">
+      <h3 class="recipe-title">{{ recipe.name || 'מתכון ללא שם' }}</h3>
+
+      <div class="recipe-details-box">
+        <div class="stars-container">
+          <span *ngFor="let star of [1,2,3,4,5]" 
+                class="star clickable" 
+                (click)="rateRecipe(recipe.id, star)"> 
+            {{ (recipe.rating || 0) >= star ? '★' : '☆' }}
+          </span>
+        </div>
+
+        <div class="meta-info">
+          <span>🕒 {{ recipe.prepTime }} דק'</span>
+          <span>⚖️ {{ recipe.type }}</span>
+        </div>
+      </div>
+
+      <p class="recipe-desc">{{ recipe.description }}</p>
+
+      <div class="card-actions">
+        <button class="btn-details" [routerLink]="['/recipes', recipe.id]">פרטי מתכון</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <div *ngIf="recipes.length > 0 && filteredRecipes.length === 0" class="no-results">
+    <p>לא נמצאו מתכונים מתאימים...</p>
+    <button (click)="clearFilters()">הצג הכל</button>
+  </div>
+</div>

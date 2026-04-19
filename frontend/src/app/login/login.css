@@ -1,0 +1,90 @@
+/* רקע לכל הדף */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* כרטיס ההתחברות */
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-header h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.login-header p {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+/* עיצוב שדות הקלט */
+.input-group {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box; /* חשוב כדי שהפדינג לא יהרוס את הרוחב */
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #e67e22; /* צבע כתום-אדמדם כשלוחצים */
+}
+
+/* כפתור ההתחברות */
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+}
+
+.login-footer {
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: #e67e22;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 5px;
+}

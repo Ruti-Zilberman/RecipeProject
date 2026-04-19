@@ -1,0 +1,235 @@
+/* קונטיינר ראשי */
+.details-container {
+    padding: 40px 20px;
+    background-color: #fdfaf5; /* צבע רקע חמים */
+    min-height: calc(100vh - 70px);
+    direction: rtl;
+}
+
+/* ה"נייר" של המתכון */
+.recipe-paper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    border: 1px solid #f1f1f1;
+}
+
+/* כפתור חזרה */
+.back-btn {
+    background: #fff;
+    border: 1px solid #eee;
+    color: #e67e22;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #fdf2e9;
+    transform: translateX(5px);
+}
+
+/* כותרת המתכון */
+.recipe-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px dashed #fdf2e9;
+}
+
+.recipe-header h1 {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.recipe-meta {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.time { background: #fdf2e9; color: #e67e22; }
+.category { background: #ebf5fb; color: #2980b9; }
+
+.description {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* תוכן המתכון - תמונה, מצרכים והוראות */
+.recipe-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* עיצוב התמונה בתוך הדף */
+.recipe-image-detail {
+    width: 100%;
+    max-height: 450px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.recipe-image-detail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* סקשנים (מצרכים והוראות) */
+h3 {
+    color: #d35400;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 8px;
+    width: fit-content;
+}
+
+/* רשימת מצרכים */
+.ingredients-section {
+    background: #fdfbf7;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ingredients-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    gap: 15px;
+    font-size: 1.1rem;
+}
+
+.ingredients-list li:last-child { border-bottom: none; }
+
+.amount {
+    font-weight: 700;
+    color: #e67e22;
+    min-width: 80px;
+}
+
+.name {
+    color: #34495e;
+}
+
+/* הוראות הכנה */
+.instructions-section {
+    padding: 0 10px;
+}
+
+.instructions-text {
+    line-height: 2;
+    color: #34495e;
+    font-size: 1.15rem;
+    white-space: pre-line; /* חשוב מאוד לשמירה על ירידות שורה */
+}
+
+/* ספינר טעינה */
+.loading-spinner {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #e67e22;
+    margin-top: 100px;
+}
+
+/* התאמה לניידים */
+@media (max-width: 600px) {
+    .recipe-paper { padding: 20px; }
+    .recipe-header h1 { font-size: 2rem; }
+    .recipe-image-detail { max-height: 250px; }
+}
+/* עדכון קטן לקלאס הקיים שלך כדי לתמוך בציפה */
+.recipe-image-detail {
+    position: relative; /* מאפשר לאלמנטים בפנים לצוף */
+    width: 100%;
+    max-height: 450px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* גלריית ווריאציות - צפה בתחתית התמונה הראשית */
+.variations-overlay {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px); /* אפקט זכוכית יוקרתי */
+    padding: 8px;
+    border-radius: 15px;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mini-thumb-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.mini-thumb-box:hover {
+    transform: scale(1.05);
+    border-color: #e67e22;
+}
+
+.mini-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* באג' סוג המתכון צף על התמונה */
+.floating-type-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(230, 126, 34, 0.9);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.mini-thumb-box {
+  min-width: 50px; /* או הגודל שבחרת */
+  min-height: 50px;
+}

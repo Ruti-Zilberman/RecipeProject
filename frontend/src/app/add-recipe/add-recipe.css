@@ -1,0 +1,112 @@
+/* add-recipe.component.css */
+
+.add-recipe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  min-height: 90vh;
+}
+
+.recipe-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px; 
+}
+
+h2 {
+  text-align: center;
+  color: #2d3436;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #636e72;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+  color: #2d3436;
+  text-align: right;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.2);
+}
+
+.btn-save {
+  width: 100%;
+  padding: 15px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-save:hover {
+  background-color: #ee5253;
+}
+
+.error-msg {
+  color: #d63031;
+  background: #fab1a033;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: center;
+}
+/* עיצוב כפתור כבוי */
+.btn-save:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* עיצוב הודעות שגיאה קטנות */
+.error-text {
+    color: #e74c3c;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    display: block;
+}
+
+.info-msg {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 10px;
+}

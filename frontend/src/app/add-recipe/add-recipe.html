@@ -1,0 +1,81 @@
+<div class="add-recipe-container">
+  <div class="recipe-card">
+    <h2>הוספת מתכון חדש</h2>
+    <p class="subtitle">שתפו אותנו ביצירה הקולינרית שלכם</p>
+
+    <form #recipeForm="ngForm" (ngSubmit)="createRecipe()">
+
+      <div class="form-group">
+        <label>שם המתכון</label>
+        <input type="text" [(ngModel)]="newRecipe.title" name="title" placeholder="למשל: עוגת גבינה אפויה" required
+          #title="ngModel">
+        <small class="error-text" *ngIf="title.invalid && title.touched">חובה להזין שם למתכון</small>
+      </div>
+
+      <div class="form-group">
+        <label>תיאור קצר</label>
+        <input type="text" [(ngModel)]="newRecipe.description" name="description"
+          placeholder="תיאור שיגרום לכולם לרצות לטעום" required #desc="ngModel">
+        <small class="error-text" *ngIf="desc.invalid && desc.touched">חובה להזין תיאור</small>
+      </div>
+
+      <div class="form-group">
+        <label>סוג המתכון</label>
+        <select [(ngModel)]="newRecipe.type" name="type" required>
+          <option value="פרווה">פרווה</option>
+          <option value="חלבי">חלבי</option>
+          <option value="בשרי">בשרי</option>
+        </select>
+      </div>
+
+      <div class="ingredients-section">
+        <label>מרכיבים</label>
+        <div *ngFor="let ing of newRecipe.ingredients; let i = index" class="ingredient-row">
+          <input type="text" [(ngModel)]="ing.name" name="ingName{{i}}" placeholder="מרכיב (למשל: קמח)" required
+            #ingName="ngModel">
+        <!-- <input type="text" [(ngModel)]="ing.amount" name="ingAmount{{i}}" 
+                 placeholder="כמות (למשל: 2 כוסות)" required> 
+         -->
+          <button type="button" class="btn-remove" (click)="removeIngredient(i)"
+            *ngIf="newRecipe.ingredients.length > 1">
+            ✖
+          </button>
+        </div>
+
+        <button type="button" class="btn-add-ing" (click)="addIngredient()">
+          + הוסף מרכיב
+        </button>
+      </div>
+
+      <!-- <div class="form-group">
+        <label>זמן הכנה (בדקות)</label>
+        <input type="number" [(ngModel)]="newRecipe.prep_time" name="prep_time" required>
+      </div> -->
+      <div class="form-group">
+        <label>זמן הכנה (בדקות)</label>
+        <input type="number" [(ngModel)]="newRecipe.prepTime" name="prepTime" required min="1" #prepTime="ngModel">
+        <small class="error-text" *ngIf="prepTime.invalid && prepTime.touched">
+          <span *ngIf="prepTime.errors?.['required']">חובה להזין זמן הכנה</span>
+          <span *ngIf="prepTime.errors?.['min']">זמן ההכנה חייב להיות לפחות דקה אחת</span>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label>הוראות הכנה</label>
+        <textarea [(ngModel)]="newRecipe.instructions" name="instructions" rows="6" placeholder="פרטו את שלבי ההכנה..."
+          required #instructions="ngModel"></textarea>
+        <small class="error-text" *ngIf="instructions.invalid && instructions.touched">חובה להזין הוראות הכנה</small>
+      </div>
+<div class="form-group">
+  <label>תמונה למתכון</label>
+  <input type="file" (change)="onFileSelected($event)" accept="image/*">
+</div>
+   <button type="submit" class="btn-save" [disabled]="recipeForm.invalid">
+  {{ isEditMode ? 'עדכן מתכון' : 'פרסם מתכון' }}
+</button>
+
+      <p *ngIf="recipeForm.invalid" class="info-msg">* יש למלא את כל שדות החובה</p>
+      <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+    </form>
+  </div>
+</div>

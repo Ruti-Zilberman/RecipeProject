@@ -1,0 +1,100 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.register-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box; /* חשוב כדי שהפדינג לא יהרוס את הרוחב */
+}
+
+input:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.2);
+}
+
+.btn-register {
+  width: 100%;
+  padding: 14px;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.btn-register:hover {
+  background-color: #e67e22;
+}
+
+.error-msg {
+  color: #e67e22;
+  background: #fab1a033;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.register-footer {
+  margin-top: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  font-size: 0.9rem;
+}
+
+.register-footer a {
+  color: #e67e22;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}

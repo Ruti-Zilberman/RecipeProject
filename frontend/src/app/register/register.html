@@ -1,0 +1,50 @@
+<div class="register-container">
+  <div class="register-card">
+    <h2>יצירת חשבון חדש</h2>
+    <p class="subtitle">הצטרפו לקהילת המתכונים שלנו</p>
+
+    <form (ngSubmit)="onRegister()">
+      <div class="form-group">
+        <label for="name">שם מלא</label>
+        <input 
+          type="text" 
+          id="name" 
+          [(ngModel)]="registerData.name" 
+          name="name" 
+          placeholder="איך קוראים לך?" 
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">אימייל</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="registerData.email" 
+          name="email" 
+          placeholder="example@mail.com" 
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">סיסמה</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="registerData.password" 
+          name="password" 
+          placeholder="מינימום 6 תווים" 
+          required>
+      </div>
+
+      <button type="submit" class="btn-register">הרשמה</button>
+      
+      <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+    </form>
+
+    <div class="register-footer">
+      <span>כבר יש לך חשבון?</span>
+      <a routerLink="/login">התחברי כאן</a>
+    </div>
+  </div>
+</div>

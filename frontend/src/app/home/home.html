@@ -1,0 +1,146 @@
+<!-- <div class="home-wrapper">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="main-title">ספר המתכונים הדיגיטלי שלך</h1>
+      <p class="subtitle">מה יש לך במקרר? הכניסי מצרכים ונתאים לך מתכון מושלם</p>
+
+      <div class="search-container">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            name="search"
+            placeholder="למשל: ברוקולי, טחינה, שום..."
+            (keyup.enter)="onSearch()" />
+          <button class="search-btn" (click)="onSearch()">חפשי לי!</button>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <span>או פשוט</span>
+        <button class="link-btn" (click)="onBrowseAll()">
+          <span class="underline">דפדפי בכל המתכונים</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="icon-circle">🎯</div>
+      <h3>דיוק במרכיבים</h3>
+      <p>אלגוריתם חכם שבודק כמה מצרכים חסרים לך.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">🕒</div>
+      <h3>חיסכון בזמן</h3>
+      <p>מציאת מתכונים לפי הזמן הפנוי שיש לך.</p>
+    </div>
+  </section>
+
+  <section class="about-story">
+    <div class="story-container">
+      <div class="story-content">
+        <h2 class="story-title">איך הכל התחיל?</h2>
+        <div class="story-text">
+          <p>האתר הזה נולד מתוך תשוקה לשילוב בין עולם הקולינריה לעולם הפיתוח. מה שהתחיל כ**פרויקט לימודי** מאתגר, הפך מהר מאוד למשהו גדול יותר.</p>
+          <p>המטרה שלי הייתה ליצור פלטפורמה פשוטה וחכמה שתעזור לכל אחד למצוא את המתכון המושלם לפי המצרכים שיש לו בבית.</p>
+        </div>
+        <div class="story-stats">
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">פיתוח מקורי</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">🚀</span>
+            <span class="stat-label">טכנולוגיית Angular</span>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+</div> -->
+<div class="home-wrapper">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="main-title">ספר המתכונים הדיגיטלי שלך</h1>
+      <p class="subtitle">מה יש לך במקרר? הכניסי מצרכים ונתאים לך מתכון מושלם</p>
+
+      <div class="search-container">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" [(ngModel)]="searchTerm" name="search" placeholder="למשל: ברוקולי, טחינה, שום..."
+            (keyup.enter)="onSearch()" />
+          <button class="search-btn" (click)="onSearch()">חפשי לי!</button>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <span>או פשוט</span>
+        <button class="link-btn" (click)="onBrowseAll()">
+          <span class="underline">דפדפי בכל המתכונים</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="recipes-listing">
+    <div class="container">
+      <h2 class="section-title">המתכונים האחרונים שנוספו</h2>
+
+      <div class="recipes-grid">
+        <div class="recipe-card" *ngFor="let recipe of featuredRecipes | slice:0:3">
+          <div class="card-img-wrapper">
+            <img [src]="recipe.imagePath" [alt]="recipe.name">
+          </div>
+          <div class="card-info">
+            <h3>{{ recipe.name }}</h3>
+            <p>{{ recipe.description | slice:0:70 }}...</p>
+            <button [routerLink]="['/recipe', recipe.id]" class="card-link">לצפייה במתכון</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="icon-circle">🎯</div>
+      <h3>דיוק במרכיבים</h3>
+      <p>אלגוריתם חכם שבודק כמה מצרכים חסרים לך.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-circle">🕒</div>
+      <h3>חיסכון בזמן</h3>
+      <p>מציאת מתכונים לפי הזמן הפנוי שיש לך.</p>
+    </div>
+  </section>
+
+  <section class="about-story">
+    <div class="story-container">
+      <div class="story-content">
+        <h2 class="story-title">איך הכל התחיל?</h2>
+        <div class="story-text">
+          <p>האתר הזה נולד מתוך תשוקה לשילוב בין עולם הקולינריה לעולם הפיתוח. מה שהתחיל כ**פרויקט לימודי** מאתגר, הפך
+            מהר מאוד למשהו גדול יותר.</p>
+          <p>המטרה שלי הייתה ליצור פלטפורמה פשוטה וחכמה שתעזור לכל אחד למצוא את המתכון המושלם לפי המצרכים שיש לו בבית.
+          </p>
+        </div>
+        <div class="story-stats">
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">פיתוח מקורי</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">🚀</span>
+            <span class="stat-label">טכנולוגיית Angular</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
